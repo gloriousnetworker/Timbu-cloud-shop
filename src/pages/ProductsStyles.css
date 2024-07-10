@@ -1,0 +1,217 @@
+.product-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--Primary-Primary, #F8DAF0);
+  text-align: center;
+  padding: 20px 0;
+}
+
+.banner-images {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.banner-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 0 10px;
+}
+
+.banner-text {
+  padding: 0 20px;
+}
+
+.banner-heading {
+  color: var(--Primary-Primary1000, #1B2F37);
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.banner-subtext {
+  color: var(--Primary-Primary700, #46778E);
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+.product-banner-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.product-banner-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 440px;
+}
+
+.product-banner-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.product-banner-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.product-banner-heading {
+  color: var(--Primary-Primary1000, #1B2F37);
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.product-banner-subheading {
+  color: var(--Primary-Primary1000, #1B2F37);
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.product-banner-text {
+  color: var(--Primary-Primary600, #548FAA);
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.new-arrival-section {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.new-arrival-heading {
+  color: var(--Primary-Primary1000, #1B2F37);
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.product-cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  font-size: 10px;
+}
+
+@media (max-width: 992px) {
+  .banner-heading {
+    font-size: 20px;
+    text-align: left;
+  }
+  
+  .banner-subtext {
+    font-size: 14px;
+    text-align: left;
+  }
+
+  .product-banner-card {
+    width: 90%;
+  }
+
+  .product-banner-description {
+    padding: 0 10px;
+  }
+
+  .new-arrival-heading {
+    font-size: 20px;
+  }
+
+  .product-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .banner-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 5px;
+  }
+
+  .banner-heading {
+    font-size: 18px;
+  }
+
+  .banner-subtext {
+    font-size: 12px;
+  }
+
+  .product-banner-card {
+    width: 100%;
+  }
+
+  .product-banner-image {
+    max-width: 100%;
+  }
+
+  .product-banner-description {
+    padding: 0 5px;
+  }
+
+  .product-banner-heading {
+    font-size: 18px;
+  }
+
+  .product-banner-subheading {
+    font-size: 14px;
+  }
+
+  .product-banner-text {
+    font-size: 12px;
+  }
+
+  .new-arrival-heading {
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .product-cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+.itWbmt {
+  font-size: 14px !important;
+}
+.lgkhwk {
+  font-size: 13px !important;
+}
+.fOmBwp {
+  font-size: 10px !important;
+  margin-top: 2px !important;
+}
+

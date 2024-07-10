@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  /* background-color: rgb(51, 90, 85); */
+  background-color: rgba(235, 243, 242, 1);
 }
 
 #root {
@@ -20,6 +20,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   padding: 2rem;
+  gap: 1rem; /* Space between cards */
 }
 
 .card {
@@ -28,15 +29,17 @@ body {
   margin: 1rem;
   padding: 1rem;
   text-align: left;
-  flex: 1 1 calc(50% - 2rem); /* Display 2 cards per row */
+  flex: 1 1 calc(33.333% - 2rem); /* Display 3 cards per row */
   box-sizing: border-box;
   transition: transform 0.2s;
+  max-width: calc(33.333% - 2rem);
 }
 
 .card img {
   max-width: 100%;
   height: auto;
   border-radius: 4px;
+  height: 1012px;
 }
 
 .card:hover {

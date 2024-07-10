@@ -1,78 +1,44 @@
-// src/components/Navbar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { FaShoppingCart } from 'react-icons/fa';
+import profile from '../assets/profile.png';
+import './NavbarStyles.css';
 
-const NavbarContainer = styled.nav`
-  background: #333;
-  color: white;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+const Navbar = () => {
+  return (
+    <nav className="navbar">
+      {/* Section 1: Logo and Links */}
+      <div className="flex items-center space-x-4 mb-4 md:mb-0">
+        <Link to="/" className="navbar-buyit font-bold hover:underline">BuyIt</Link>
+        <Link to="/" className="navbar-link hover:underline hidden md:inline">New Arrival</Link>
+        <Link to="/" className="navbar-link hover:underline hidden md:inline">Explore</Link>
+      </div>
 
-const NavLinks = styled.div`
-  display: flex;
-  align-items: center;
-`;
+      {/* Section 2: Search Bar */}
+      <div className="flex-grow flex items-center justify-center px-4 mb-4 md:mb-0">
+        <input
+          type="text"
+          placeholder="Search..."
+          className="navbar-search-input"
+        />
+      </div>
 
-const NavLink = styled(Link)`
-  color: white;
-  text-decoration: none;
-  margin: 0 1rem;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-const RightSection = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const SearchBar = styled.input`
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  margin-right: 1rem;
-  flex-grow: 1;
-  max-width: 200px;
-`;
-
-const ProfileDescription = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 1rem;
-`;
-
-const ProfileImage = styled.img`
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin-right: 0.5rem;
-`;
-
-const Navbar = () => (
-  <NavbarContainer>
-    <NavLinks>
-      <NavLink to="/">Products</NavLink>
-      <NavLink to="/checkout">Checkout</NavLink>
-    </NavLinks>
-    <RightSection>
-      <SearchBar type="text" placeholder="Search..." />
-      <NavLink to="/cart">
-        <FontAwesomeIcon icon={faShoppingCart} size="lg" />
-      </NavLink>
-      <ProfileDescription>
-        <ProfileImage src="https://via.placeholder.com/40" alt="Profile" />
-        <span>John Doe</span>
-      </ProfileDescription>
-    </RightSection>
-  </NavbarContainer>
-);
+      {/* Section 3: Cart and Profile */}
+      <div className="flex items-center space-x-4">
+        <Link to="/cart" className="text-primary-700 hover:text-gray-500">
+          <FaShoppingCart className="navbar-cart-icon" />
+        </Link>
+        <div className="flex items-center space-x-1 ml-auto">
+          <img
+            src={profile}
+            alt="Profile"
+            className="navbar-profile-img"
+          />
+          <span className="navbar-link hover:underline">My Account</span>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
 export default Navbar;

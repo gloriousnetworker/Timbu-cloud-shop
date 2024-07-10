@@ -1,0 +1,81 @@
+/* General styles for the navbar */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 100%;
+  margin: auto;
+}
+
+.navbar-buyit {
+  color: var(--Primary-Primary700, #46778E);
+  font-family: Roboto;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 120%;
+}
+
+.navbar-link {
+  color: var(--Primary-Primary700, #1B2F37);
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.navbar-search-input {
+  display: flex;
+  width: 262px;
+  padding: 8px 12px;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 32px;
+  border: 1px solid var(--Primary-Primary1000, #1B2F37);
+}
+
+.navbar-cart-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.navbar-profile-img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Media queries for responsiveness */
+@media (min-width: 640px) {
+  .navbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .navbar-link {
+    display: inline-block;
+  }
+  
+  .navbar-search-input {
+    width: 100%;
+    max-width: 262px;
+  }
+  
+  .navbar-cart-icon,
+  .navbar-profile-img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 639px) {
+  .navbar-link {
+    display: none;
+  }
+  
+  .navbar-search-input {
+    width: 100%;
+  }
+}
