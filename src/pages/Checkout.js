@@ -1,9 +1,12 @@
-import React from 'react';
+// Checkout.js
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { CartContext } from '../contexts/CartContext';
 
 // Import images from the assets folder
-import productImage1 from '../assets/product1.png';
-import productImage2 from '../assets/product2.png';
+// import productImage1 from '../assets/checkoutImage1.png';
+// import productImage2 from '../assets/checkoutImage2.png';
 
 const CheckoutContainer = styled.div`
   display: flex;
@@ -20,7 +23,7 @@ const CheckoutContainer = styled.div`
   }
 `;
 
-const Heading = styled.h1`
+const Heading = styled(Link)`
   color: var(--Primary-Primary1000, #1B2F37);
   font-family: Roboto;
   font-size: 20px;
@@ -30,6 +33,11 @@ const Heading = styled.h1`
   margin-bottom: 20px;
   text-align: left;
   width: 100%;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 
   @media (max-width: 768px) {
     font-size: 20px;
@@ -112,6 +120,45 @@ const ProductPrice = styled.span`
   margin-top: auto;
 `;
 
+const QuantityControls = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+
+  button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
+  span {
+    margin: 0 10px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+`;
+
+const RemoveButton = styled.button`
+  background-color: #ff4d4d;
+  color: #ffffff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  align-self: flex-start;
+
+  &:hover {
+    background-color: #ff1a1a;
+  }
+`;
+
 const Subtotal = styled.div`
   display: flex;
   justify-content: space-between;
@@ -156,20 +203,28 @@ const CheckoutButton = styled.button`
 `;
 
 const Checkout = () => {
-  // Dummy product data for illustration
-  const products = [
-    { id: 1, name: "Product 1", image: productImage1, quantity: 2, price: 29.99 },
-    { id: 2, name: "Product 2", image: productImage2, quantity: 1, price: 49.99 }
-  ];
+  const { cartItems, updateQuantity, removeFromCart } = useContext(CartContext);
 
-  const subtotal = products.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
+  const handleIncrement = (id) => {
+    updateQuantity(id, cartItems.find(item => item.id === id).quantity + 1);
+  };
+
+  const handleDecrement = (id) => {
+    updateQuantity(id, cartItems.find(item => item.id === id).quantity - 1);
+  };
+
+  const handleRemove = (id) => {
+    removeFromCart(id);
+  };
+
+  const subtotal = cartItems.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
 
   return (
     <CheckoutContainer>
-      <Heading>Check Out</Heading>
+      <Heading to="/cart">My Cart</Heading>
       <OrderSummary>
         <ProductList>
-          {products.map((product) => (
+          {cartItems.map((product) => (
             <ProductItem key={product.id}>
               <ProductImageContainer>
                 <ProductImage src={product.image} alt={product.name} />
@@ -178,6 +233,12 @@ const Checkout = () => {
                 <ProductName>{product.name}</ProductName>
                 <ProductQuantity>Quantity: {product.quantity}</ProductQuantity>
                 <ProductPrice>${(product.price * product.quantity).toFixed(2)}</ProductPrice>
+                <QuantityControls>
+                  <button onClick={() => handleDecrement(product.id)}>-</button>
+                  <span>{product.quantity}</span>
+                  <button onClick={() => handleIncrement(product.id)}>+</button>
+                </QuantityControls>
+                <RemoveButton onClick={() => handleRemove(product.id)}>Remove</RemoveButton>
               </ProductDetails>
             </ProductItem>
           ))}

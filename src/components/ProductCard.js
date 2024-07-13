@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { FaStar } from 'react-icons/fa';
+import { CartContext } from '../contexts/CartContext';
 
 const Card = styled.div`
   display: flex;
@@ -71,9 +72,12 @@ const OldPrice = styled.div`
 
 const ProductCard = ({ name, image, price, rating, oldPrice }) => {
   const navigate = useNavigate();
+  const { addToCart } = useContext(CartContext);
 
   const handleImageClick = () => {
-    navigate('/checkout');
+    const product = { name, image, price, rating, oldPrice };
+    addToCart(product);
+    navigate('/cart'); // Navigate to the cart page
   };
 
   return (

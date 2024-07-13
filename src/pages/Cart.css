@@ -1,0 +1,122 @@
+/* src/pages/Cart.css */
+
+.cart-page {
+    padding: 2rem;
+  }
+  
+  .cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .cart-item-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    align-self: stretch;
+  }
+  
+  .cart-item-card {
+    display: flex;
+    height: 418px;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+    border: 1px solid #e5e7eb;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .product-card {
+    flex-direction: column;
+  }
+  
+  .description-card {
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+  }
+  
+  .description-content {
+    position: absolute;
+    bottom: 0;
+    left: 1rem; /* Adjust the left padding as needed */
+    text-align: left;
+  }
+  
+  .product-name {
+    color: var(--Primary-Primary1000, #1B2F37);
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 24px */
+    margin: 0; /* Ensure no extra margins */
+  }
+  
+  .product-price {
+    color: var(--Primary-Primary900, #253F4B);
+    font-family: Roboto;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 28.8px */
+    margin: 0; /* Ensure no extra margins */
+  }
+  
+  .product-image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+  
+  .add-to-cart-button {
+    margin-top: 1rem; /* Adjust spacing from product cards */
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .add-to-cart-btn {
+    border-radius: 8px;
+    background: var(--Primary-Primary900, #253F4B);
+    color: white;
+    display: flex;
+    padding: 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-to-cart-btn:hover {
+    background: #1b2f37; /* Darken the background on hover */
+  }
+  
+  .product-description {
+    margin-top: 2rem;
+  }
+  
+  .description-title {
+    color: var(--Primary-Primary1000, #1B2F37);
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%; /* 21.6px */
+    align-self: stretch;
+  }
+  
+  .description-text {
+    color: var(--Primary-Primary600, #548FAA);
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    align-self: stretch;
+  }
+  
