@@ -1,12 +1,7 @@
-// Checkout.js
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { CartContext } from '../contexts/CartContext';
-
-// Import images from the assets folder
-// import productImage1 from '../assets/checkoutImage1.png';
-// import productImage2 from '../assets/checkoutImage2.png';
 
 const CheckoutContainer = styled.div`
   display: flex;
@@ -206,11 +201,11 @@ const Checkout = () => {
   const { cartItems, updateQuantity, removeFromCart } = useContext(CartContext);
 
   const handleIncrement = (id) => {
-    updateQuantity(id, cartItems.find(item => item.id === id).quantity + 1);
+    updateQuantity(id, cartItems.find((item) => item.id === id).quantity + 1);
   };
 
   const handleDecrement = (id) => {
-    updateQuantity(id, cartItems.find(item => item.id === id).quantity - 1);
+    updateQuantity(id, cartItems.find((item) => item.id === id).quantity - 1);
   };
 
   const handleRemove = (id) => {
@@ -223,31 +218,37 @@ const Checkout = () => {
     <CheckoutContainer>
       <Heading to="/cart">My Cart</Heading>
       <OrderSummary>
-        <ProductList>
-          {cartItems.map((product) => (
-            <ProductItem key={product.id}>
-              <ProductImageContainer>
-                <ProductImage src={product.image} alt={product.name} />
-              </ProductImageContainer>
-              <ProductDetails>
-                <ProductName>{product.name}</ProductName>
-                <ProductQuantity>Quantity: {product.quantity}</ProductQuantity>
-                <ProductPrice>${(product.price * product.quantity).toFixed(2)}</ProductPrice>
-                <QuantityControls>
-                  <button onClick={() => handleDecrement(product.id)}>-</button>
-                  <span>{product.quantity}</span>
-                  <button onClick={() => handleIncrement(product.id)}>+</button>
-                </QuantityControls>
-                <RemoveButton onClick={() => handleRemove(product.id)}>Remove</RemoveButton>
-              </ProductDetails>
-            </ProductItem>
-          ))}
-        </ProductList>
-        <Subtotal>
-          <span>Subtotal:</span>
-          <span>${subtotal}</span>
-        </Subtotal>
-        <CheckoutButton>Checkout</CheckoutButton>
+        {cartItems.length > 0 ? (
+          <>
+            <ProductList>
+              {cartItems.map((product) => (
+                <ProductItem key={product.id}>
+                  <ProductImageContainer>
+                    <ProductImage src={product.image} alt={product.name} />
+                  </ProductImageContainer>
+                  <ProductDetails>
+                    <ProductName>{product.name}</ProductName>
+                    <ProductQuantity>Quantity: {product.quantity}</ProductQuantity>
+                    <ProductPrice>${(product.price * product.quantity).toFixed(2)}</ProductPrice>
+                    <QuantityControls>
+                      <button onClick={() => handleDecrement(product.id)}>-</button>
+                      <span>{product.quantity}</span>
+                      <button onClick={() => handleIncrement(product.id)}>+</button>
+                    </QuantityControls>
+                    <RemoveButton onClick={() => handleRemove(product.id)}>Remove</RemoveButton>
+                  </ProductDetails>
+                </ProductItem>
+              ))}
+            </ProductList>
+            <Subtotal>
+              <span>Subtotal:</span>
+              <span>${subtotal}</span>
+            </Subtotal>
+            <CheckoutButton>Checkout</CheckoutButton>
+          </>
+        ) : (
+          <p>Your cart is empty.</p>
+        )}
       </OrderSummary>
     </CheckoutContainer>
   );
